@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="A simple jQuery plugin to add Instagram photos to your website">
+    <meta name="author" content="Djordje Pantovic">
+    <title>Handlegram</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+    .photo-box .description small { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    </style>
+</head>
+<body>
+
+    <section class="instagram-wrap">
+        <div class="container">
+            <h3>Latest Photos</h3>
+            <div class="row instafeed">
+                <script id="instagram-template" type="text/x-handlebars-template">
+                    {{#each this}}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="photo-box">
+                            <div class="image-wrap">
+                                <a href="{{link}}"><img src="{{image}}" alt="" class="img-responsive"></a>
+                            </div>
+                            <div class="description">
+                                <strong>{{likes}} Likes</strong>
+                                <p>{{username}}</p>
+                                <small>{{caption}}</small>
+                                <small>{{date}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </script>
+            </div>
+        </div>
+    </section>
+    
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="js/handlebars-v4.0.5.js"></script>
+<script src="https://cdn.rawgit.com/djordjepantovic/jquery-handlegram/master/handlegram.jquery.min.js"></script>
+
+<script>
+
+$('div.instafeed').handlegram({
+    clientId: '97ae5f4c024c4a91804f959f43f2635f',
+    template: $('#instagram-template'),
+    limit: 8
+});
+
+</script>
+</body>
+</html>
