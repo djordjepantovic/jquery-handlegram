@@ -75,10 +75,10 @@ if (typeof Object.create !== 'function') {
 				return {
 					image: obj.images[self.options.resolution].url,
 					likes: obj.likes.count,
-					caption: obj.caption.text,
+					caption: (obj.caption) ? obj.caption.text : '',
 					link: obj.link,
 					username: obj.user.username,
-					date: self.formatTime(obj.caption.created_time)
+					date: (obj.caption) ? self.formatTime(obj.caption.created_time) : ''
 				}
 			});
 		},
